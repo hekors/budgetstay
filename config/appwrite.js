@@ -154,7 +154,7 @@ export const githubAuth = () => {
 export const checkAuthenticated = () => {
   try {
     const account = new Account(client);
-    return account.getSessions();
+    return account.getSession();
   } catch (error) {
     throw new Error(error);
   }
