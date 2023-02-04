@@ -38,4 +38,8 @@ const Navbar = () => {
   );
 };
 
+const DashboardNavbar = () => {
+    
+}
+
 export default Navbar;
