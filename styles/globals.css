@@ -1,0 +1,6 @@
+
+.hero-section-bg {
+    background-image: url("../public/assets/hero-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
