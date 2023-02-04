@@ -9,7 +9,6 @@ import {
   FormLabel,
   Input,
   Button,
-  Container,
   VStack,
   FormErrorMessage,
   CircularProgress,
@@ -94,19 +93,20 @@ const Signup = () => {
   return (
     <React.Fragment>
       <BaseLayout background="#020817" h="100vh">
-        <Grid
-          display="grid"
-          boxShadow={"base"}
-          borderRadius={"base"}
-          gridTemplateColumns="auto auto"
-          justifyContent="sp"
-        >
-          <Box w={{ sm: "base", md: "md" }} m="12">
-            <Heading textAlign="center" fontSize="5xl" color="white" my="4">
+        <Grid gridTemplateColumns="auto auto" alignItems={"center"}>
+          <Box
+            w={{ sm: "base", md: "md" }}
+            m="10"
+            p="10"
+            boxShadow={"2xl"}
+            bgColor={"white"}
+            borderRadius={"md"}
+          >
+            <Heading textAlign="center" fontSize="4xl" my="4">
               Sign Up
             </Heading>
             <form onSubmit={handleSignUpSubmit}>
-              <VStack>
+              <VStack gap={2}>
                 {/***** Name Input *****/}
                 <FormControl
                   isRequired={error.isError}
@@ -114,18 +114,13 @@ const Signup = () => {
                     error.isError && error.errorNameMessage.length !== 0
                   }
                 >
-                  <FormLabel color="white" htmlFor="name">
-                    Full Name
-                  </FormLabel>
+                  <FormLabel htmlFor="name">Full Name</FormLabel>
                   <Input
                     type={"text"}
                     name="name"
                     id="name"
                     borderRadius={"base"}
-                    padding="6"
-                    variant="filled"
-                    outline="none"
-                    background="#B8C1DC"
+                    bgColor={"gray.200"}
                     value={data.lastName}
                     onChange={handleChangeName}
                     placeholder="Enter your full name"
@@ -147,18 +142,14 @@ const Signup = () => {
                     error.isError && error.errorEmailMessage.length !== 0
                   }
                 >
-                  <FormLabel color="white" htmlFor="email">
-                    Email
-                  </FormLabel>
+                  <FormLabel htmlFor="email">Email</FormLabel>
                   <Input
                     type={"email"}
                     name="email"
-                    padding="6"
                     id="email"
                     borderRadius={"base"}
-                    variant="filled"
                     value={data.email}
-                    background="#B8C1DC"
+                    bgColor={"gray.200"}
                     onChange={handleChangeEmail}
                     placeholder="Enter your email address"
                     _focus={{ boxShadow: "outline" }}
@@ -179,17 +170,14 @@ const Signup = () => {
                     error.isError && error.errorPasswordMessage.length !== 0
                   }
                 >
-                  <FormLabel color="white">Password</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <Input
-                    background="#B8C1DC"
+                    bgColor={"gray.200"}
                     type={"password"}
                     name="password"
-                    padding="6"
                     id="password"
-                    variant="filled"
                     borderRadius={"base"}
                     value={data.password}
-                    marginBottom="6"
                     onChange={handleChangePassword}
                     placeholder="Enter your password"
                     _focus={{ boxShadow: "outline" }}
@@ -207,14 +195,17 @@ const Signup = () => {
                 <Button
                   w="full"
                   type="submit"
-                  padding="6"
                   variant="solid"
                   size="md"
                   colorScheme="blue"
                   _focus={{ transform: "scale(1.02)", boxShadow: "outline" }}
                 >
                   {loading ? (
-                    <CircularProgress isIndeterminate size="24px" color="red" />
+                    <CircularProgress
+                      isIndeterminate
+                      size="24px"
+                      color="gray.400"
+                    />
                   ) : (
                     "Sign Up"
                   )}
@@ -222,28 +213,31 @@ const Signup = () => {
               </VStack>
             </form>
           </Box>
-          <Box textAlign={'center'}>
+          <Box textAlign={"center"}>
             <Text
               zIndex="10"
               color="white"
               textAlign="center"
               position="absolute"
               fontSize="3xl"
-              top={'32'}
+              top={"32"}
               right="200"
               w="md"
-              mx={'auto'}
+              mx={"auto"}
             >
               Start your journey today with a comfortable Hostel stay
-              <Text w='48' m='auto' fontSize='lg' mt='6'>Sign up and explore the world of Hostels.</Text>
+              <Text w="48" m="auto" fontSize="lg" mt="6">
+                Sign up and explore the world of Hostels.
+              </Text>
             </Text>
             <Box>
               <Image
                 src={"/assets/signup.svg"}
                 h="75vh"
-                mx={'auto'}
+                mx={"auto"}
                 mt="-10"
                 zIndex="-6"
+                alt="Background Image"
               />
             </Box>
           </Box>
