@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 import { register } from "../config/appwrite";
 import { helpers } from "../helpers";
-import { Client, Account, ID } from "appwrite";
 
 const Signup = () => {
   const router = useRouter();
