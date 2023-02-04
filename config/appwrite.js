@@ -1,39 +1,128 @@
-import { Client, Database, Account, ID } from "appwrite";
+import { Client, Databases, Account, ID } from "appwrite";
 
-let appwrite = new Client()
+// // const appwrite = new Client()
+// //   // .setEndpoint(process.env.END_POINT)
+// //   .setEndpoint("http://localhost/v1")
+// //   .setProject("63dd85af938c3212d806");
+// // // .setProject(process.env.PROJECT_ID);
+
+// export const register = async (email, password) => {
+//   try {
+//     const account = new Account(client);
+//     return account.create("unique()", email, password);
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };
+
+// const api = {
+//   sdk: null,
+//   provider: () => {
+//     let appwrite = new Client();
+//     appwrite
+//       .setEndpoint("http://localhost/v1")
+//       .setProject("63dd85af938c3212d806");
+//     const account = new Account(appwrite);
+//     const database = new Databases(appwrite, "63dd8a1d6f634ab0ed1b");
+
+//     api.sdk = { database, account };
+//     return appwrite;
+//   },
+//   createAccount: (email, password) => {
+//     api
+//       .provider()
+//       .account.create(ID.unique(), email, password)
+//       .then((response) => {
+//         return response;
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         return err;
+//       });
+//   },
+
+//   getAccount: () => {
+//     api
+//       .provider()
+//       .account.get()
+//       .then((response) => {
+//         return response;
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         return err;
+//       });
+//   },
+
+//   createSession: (email, password) => {
+//     api
+//       .provider()
+//       .account.createEmailSession(email, password)
+//       .then((response) => {
+//         return response;
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         return err;
+//       });
+//   },
+
+//   deleteCurrentSession: () => {
+//     api
+//       .provider()
+//       .account.deleteSession("current")
+//       .then((response) => {
+//         return response;
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         return err;
+//       });
+//   },
+// };
+
+// export { api };
+
+const client = new Client()
   // .setEndpoint(process.env.END_POINT)
   .setEndpoint("http://localhost/v1")
   .setProject("63dd85af938c3212d806");
 // .setProject(process.env.PROJECT_ID);
 
-let account = new Account(appwrite);
-// let database = new Database(appwrite, process.env.DATABASE_ID);
-
-const api = {
-  createAccount: (email, password) => {
-
-  },
-
-  // getAccount: () => {
-  //   return api.provider().account.get();
-  // },
-
-  // createSession: (email, password) => {
-  //   api
-  //     .provider()
-  //     .account.createEmailSession(email, password)
-  //     .then((response) => {
-  //       return response;
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       return err;
-  //     });
-  // },
-
-  // deleteCurrentSession: () => {
-  //   return api.provider().account.deleteSession("current");
-  // },
+export const getUserData = async () => {
+  try {
+    const account = new Account(client);
+    return account.get();
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
-export { api };
+export const login = async (email, password) => {
+  try {
+    const account = new Account(client);
+    return account.createEmailSession(email, password);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const logout = async () => {
+  try {
+    const account = new Account(client);
+    return account.deleteSession("current");
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const register = async (email, password, name) => {
+  try {
+    const account = new Account(client);
+    return account.create("unique()", email, password, name);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export default client;
