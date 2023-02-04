@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- # <b style="color:Darkblue">BudgetStay</b> -->
+<center><img src="./Group.png" style="background: #020817; padding:4px 8px; border-radius:12px; margin:0px 0px 20px "></center>
+<blockquote> Your one-step <b>DESTINATION!</b> Mark a home away from home. </blockquote>
 
-## Getting Started
+Table of contents:
+<table>
+<tr>
+<td>1.</td>
+<td> What is BudgetStay</td>
+</tr>
+<tr>
+<td>2.</td>
+<td> Problem Statement</td>
+</tr>
+<tr>
+<td>3.</td>
+<td> The Solution</td>
+</tr>
+<tr>
+<td>4.</td>
+<td> Our Tech Stack </td>
+</tr>
+<tr>
+<td>5.</td>
+<td>Contributions</td>
+</tr>
+<td>6.</td>
+<td>References </td>
+</tr>
 
-First, run the development server:
+</table>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## What is BudgetStay?
+BudgetStay is a budget-friendly accommodation specially designed for students to provide clean and hygienic homes away from home. After all, we all love our home as much as we love our food. Homes are as lovable as food. Both provide comfort, warmth, and never disappoint.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+MEME 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## The Pain Point 
+Nowadays, finding a space to live has become so much easier. But you don’t get the guaranty of being secure and safe. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+You get what you want, but the reality is very different! Let's say you are looking for hostels that provide vegetarian food (especially Jain food). You visit and find it to be an ideal place for you to stay. Once you start living, you realize that everything was just "dikhane ke daat"! Here is a real-time problem faced by one of the students. 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Tweet goes here... 
 
-## Learn More
+## The Solution
+The major goal of this platform is to make it free of charge, easily accessible to everyone, and provide a better user experience. BudgetStay promises you security and safety first. Trust us, find a home, and thank us later when you leave. 
 
-To learn more about Next.js, take a look at the following resources:
+#### Our facilities that feels like home
+1. Freshly made foods
+2. Area of your choice
+3. Free of cost 
+4. Valuable hostels and flats
+5. Security is our priority
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Our Tech Stack
+To begin with, first, we did User Research. Next, we created the user flow and functionality. This led us to high-fidelity design and implementation. Here is our tech stack.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Figma for UI designing. 
+2. Next js for frontend development.
+3. Node js for backend development.
+4. Appwrite for Authentication purpose. 
+5. Chakra UI for UI Components.
+6. Twilio is used for chating purpose.
 
-## Deploy on Vercel
+## References 
+* To design the user flow, we have used FigJam. Here is the link: [HTF Project](https://www.figma.com/file/uKHXgWSC7L33x459G60KkF/HTF-Project-Structure%2FDesign?node-id=12%3A692&t=gdnIrafQHH8xqcQo-0) 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* For documentation, we have used [Notion](https://sneha-farkya.notion.site/BudgetStay-0592aaaa62124cb6a0314725b2c89924) file.
