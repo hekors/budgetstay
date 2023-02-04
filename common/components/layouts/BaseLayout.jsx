@@ -7,7 +7,7 @@ const BaseLayout = ({ children, ...props }) => {
       <Box
         px={{ base: "6", md: "6", lg: "20", sm: "10", xl: "28" }}
         pb="0"
-        pt={{ base: "8", sm: "16", md: "20" }}
+        pt={{ base: "8", sm: "16", md: "10" }}
         {...props}
       >
         {children}
