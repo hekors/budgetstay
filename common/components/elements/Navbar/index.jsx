@@ -30,7 +30,7 @@ const Navbar = () => {
           />
         </Link>
         <HStack>
-          <ColorModeSwitcher />
+          {/* <ColorModeSwitcher /> */}
           <ButtonGroup>
             <Link href="/login">
               <Button colorScheme={"blue"} variant={"ghost"}>

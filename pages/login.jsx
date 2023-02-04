@@ -5,8 +5,8 @@ import { helpers } from "../helpers/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BaseLayout from "../common/components/layouts/BaseLayout";
-import {FcGoogle} from 'react-icons/fc'
-import {FaGithub} from 'react-icons/fa'
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 import {
   Box,
@@ -18,14 +18,19 @@ import {
   VStack,
   FormErrorMessage,
   Heading,
+  CircularProgress,
   Text,
   Grid,
   Image,
   Ba,
+  Link,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 const Login = () => {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
     email: "",
@@ -67,9 +72,12 @@ const Login = () => {
 
     if (helpers.validEmail(email) && data.email && password) {
       try {
+        setLoading(true);
         login(email, password);
-        router.push("/app/dashboard");
+        router.push("/dashboard");
+        setLoading(false);
       } catch (err) {
+        setLoading(false);
         switch (err.code) {
           case "auth/Invalid-email":
             setError({
@@ -113,6 +121,8 @@ const Login = () => {
             );
             break;
         }
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -123,12 +133,11 @@ const Login = () => {
         <Grid gridTemplateColumns="auto auto">
           <Box
             w={{ sm: "base", md: "md" }}
+            p="10"
             m="10"
-            p='10'
-            boxShadow={'2xl'}
+            boxShadow={"2xl"}
             bgColor={"gray.100"}
             borderRadius={"md"}
-          
           >
             <Heading textAlign="center" fontSize="4xl" my="4">
               Login
@@ -136,7 +145,7 @@ const Login = () => {
             <Box>
               <form onSubmit={handleLoginSubmit}>
                 {/***** Email Input *****/}
-                <VStack gap={2}>
+                <VStack gap={2} align="left">
                   <FormControl
                     isRequired={error.isError}
                     isInvalid={
@@ -152,7 +161,7 @@ const Login = () => {
                       value={data.email}
                       _focus={{ boxShadow: "outline" }}
                       onChange={handleChangeEmail}
-                      placeholder="Email"
+                      placeholder="johndoe@gmail.com"
                     />
                     {error.isError ? (
                       <FormErrorMessage>
@@ -179,7 +188,7 @@ const Login = () => {
                       value={data.password}
                       onChange={handleChangePassword}
                       _focus={{ boxShadow: "outline" }}
-                      placeholder="Password"
+                      placeholder="**********"
                     />
                     {error.isError ? (
                       <FormErrorMessage>
@@ -189,6 +198,15 @@ const Login = () => {
                       <></>
                     )}
                   </FormControl>
+
+                  <Link
+                    href="/reset-password"
+                    fontSize="sm"
+                    alt="Sign up"
+                    color="blue"
+                  >
+                    Forgot Password?
+                  </Link>
 
                   {/* Login Button */}
                   <Button
@@ -201,7 +219,15 @@ const Login = () => {
                       boxShadow: "outline",
                     }}
                   >
-                    Log In
+                    {loading ? (
+                      <CircularProgress
+                        isIndeterminate
+                        size="24px"
+                        color="gray.400"
+                      />
+                    ) : (
+                      "Sign in"
+                    )}
                   </Button>
                 </VStack>
               </form>
@@ -214,23 +240,18 @@ const Login = () => {
                 mx="auto"
                 w="full"
                 onClick={googleAuth}
-               gap='3'
+                gap="3"
               >
                 <FcGoogle />
                 Login with Google
               </Button>
-              <Button
-                variant="outline"
-                my="2"
-                mx="auto"
-                w="full"
-                onClick={githubAuth}
-                gap='3'
-              >
-                <FaGithub />
-                Login with GitHub
-              </Button>
             </Box>
+            <Text my="4" textAlign="center">
+              Don&apos;t have an account?{" "}
+              <Link href="/signup" alt="Sign up" color="blue">
+                Sign up
+              </Link>
+            </Text>
           </Box>
           <Box textAlign={"center"}>
             <Text
