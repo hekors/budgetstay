@@ -5,6 +5,8 @@ import { CloseIcon } from "@chakra-ui/icons";
 import ReactModal from 'react-modal';
 import ListNewProperty from "./ListNewProperty";
 import { DashboardNavbar } from "../../Navbar";
+import AlgoliaSearchWrapper from "../../AlgoliaSearch";
+import "instantsearch.css/themes/satellite-min.css";
 
 const SellerView = () => {
     const [isNewPropertyModalOpen, setNewPropertyModalOpen] = useState(false);
@@ -28,6 +30,9 @@ const SellerView = () => {
                 <Box className="owner-dashbaord-section">
                     <BaseLayout>
                         <Heading fontSize={"xl"}>{"Latest Rental Properties"}</Heading>
+                        <Box>
+                            <AlgoliaSearchWrapper/>
+                        </Box>
                     </BaseLayout>
                 </Box>
             </Box>

@@ -14,6 +14,7 @@ import {
   CircularProgress,
   Heading,
   Link,
+  Select,
 } from "@chakra-ui/react";
 import { register } from "../config/appwrite";
 import { helpers } from "../helpers";
@@ -36,6 +37,12 @@ const Signup = () => {
     errorEmailMessage: "",
     errorPasswordMessage: "",
   });
+
+  const [userCategory, setUserCategory] = useState("");
+
+  const storeUserCategory = (category) => {
+    localStorage.setItem("user-category", category);
+  };
 
   const handleChangeName = (e) => {
     setData({
@@ -136,6 +143,16 @@ const Signup = () => {
                   )}
                 </FormControl>
 
+                <FormControl>
+                  <FormLabel>{"What defines you better?"}</FormLabel>
+                  <Select placeholder={"Select what you're looking for?"}
+                    onChange={(userCategoryChangeEvent) => setUserCategory(userCategoryChangeEvent.target.value)}
+                  >
+                    <option value="buyer">{"Student / Looking for a PG, Hostel or Flat"}</option>
+                    <option value="seller">{"Owner / Want to list your properties on our platform for sale"}</option>
+                  </Select>
+                </FormControl>
+
                 {/***** Email Input *****/}
                 <FormControl
                   isRequired={error.isError}
@@ -200,6 +217,9 @@ const Signup = () => {
                   size="md"
                   colorScheme="blue"
                   _focus={{ transform: "scale(1.02)", boxShadow: "outline" }}
+                  onClick={() => {
+                    storeUserCategory(userCategory);
+                  }}
                 >
                   {loading ? (
                     <CircularProgress
