@@ -13,7 +13,7 @@ import {
   CircularProgress,
   Heading,
 } from "@chakra-ui/react";
-import { api, createAccount } from "../config/appwrite";
+import { register } from "../config/appwrite";
 import { helpers } from "../helpers";
 import { Client, Account, ID } from "appwrite";
 
@@ -71,23 +71,20 @@ const Signup = () => {
       });
     }
 
-    api
-
     if (helpers.validEmail(email) && email && password) {
-      // try {
-      //   console.log("hy");
-      //   router.push("/login");
-      //   helpers.alertToastHandling("You are successfully registered");
-      // } catch (err) {
-      //   console.log(err.code, 1010);
-      //   setError({
-      //     isError: true,
-      //     errorNameMessage: "Please enter the last name",
-      //     errorEmailMessage: "Please enter correct email address",
-      //     errorPasswordMessage: "Please enter correct password",
-      //   });
-      //   helpers.alertToastHandling("error?.response?.data?.message");
-      // }
+      try {
+        register(email, password);
+        router.push("/login");
+        helpers.alertToastHandling("You are successfully registered");
+      } catch (err) {
+        setError({
+          isError: true,
+          errorNameMessage: "Please enter the last name",
+          errorEmailMessage: "Please enter correct email address",
+          errorPasswordMessage: "Please enter correct password",
+        });
+        helpers.alertToastHandling("error?.response?.data?.message");
+      }
     }
     setLoading(false);
   };
