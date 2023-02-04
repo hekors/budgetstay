@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 
 import BaseLayout from "../common/components/layouts/BaseLayout";
+// import AlgoliasearchWrapper from "../common/components/elements/AlgoliaSearch";
+// import "instantsearch.css/themes/satellite-min.css";
 
 const Custom500 = () => {
   return (
@@ -36,6 +38,7 @@ const Custom500 = () => {
             </NextLink>
           </Box>
         </Container>
+        {/* <AlgoliasearchWrapper /> */}
       </BaseLayout>
     </React.Fragment>
   );
