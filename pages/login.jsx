@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { api } from "../config/appwrite";
+import { login, googleAuth, githubAuth } from "../config/appwrite";
 import { helpers } from "../helpers/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Client, Account, ID } from "appwrite";
 
 import {
   Box,
@@ -16,6 +15,7 @@ import {
   VStack,
   FormErrorMessage,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 
 const Login = () => {
@@ -48,7 +48,6 @@ const Login = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log(data.email, data.password);
 
     if (!data.email && !data.password) {
       setError({
@@ -60,27 +59,10 @@ const Login = () => {
 
     const { email, password } = data;
 
-    const client = new Client()
-      .setEndpoint("http://localhost/v1") // Your API Endpoint
-      .setProject("63dd96440ed1837d151c"); // Your project ID
-
-    const account = new Account(client);
-
-    const promise = account.create(ID.unique(), "yashsehgal.work@gmail.com", "password");
-
-    promise.then(
-      function (response) {
-        console.log(response);
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
-
     if (helpers.validEmail(email) && data.email && password) {
       try {
-        api.createAccount(email, password);
-        router.push("/");
+        login(email, password);
+        router.push("/app/dashboard");
       } catch (err) {
         switch (err.code) {
           case "auth/Invalid-email":
@@ -205,6 +187,27 @@ const Login = () => {
               </Button>
             </VStack>
           </form>
+          <Text my="4" fontWeight="bold" textAlign="center">
+            OR
+          </Text>
+          <Button
+            variant="outline"
+            my="2"
+            mx="auto"
+            w="full"
+            onClick={googleAuth}
+          >
+            Login with Google
+          </Button>
+          <Button
+            variant="outline"
+            my="2"
+            mx="auto"
+            w="full"
+            onClick={githubAuth}
+          >
+            Login with GitHub
+          </Button>
         </Box>
       </Container>
       <ToastContainer
