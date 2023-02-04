@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout';
 
 const Navbar = () => {
     return (
-        <Box bgColor={"black"}>
+        <Box bgColor={"black"} pb={"10"}>
             <BaseLayout flexDirection={"row"} display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
                 <Link href="/">
                     <Image 
