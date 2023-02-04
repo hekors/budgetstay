@@ -4,11 +4,13 @@ import BaseLayout from "../../../layouts/BaseLayout";
 import { CloseIcon } from "@chakra-ui/icons";
 import ReactModal from 'react-modal';
 import ListNewProperty from "./ListNewProperty";
+import { DashboardNavbar } from "../../Navbar";
 
 const SellerView = () => {
     const [isNewPropertyModalOpen, setNewPropertyModalOpen] = useState(false);
     return (
         <>
+            <DashboardNavbar />
             <Box>
                 <Box bgColor={"black"} pb={"24"}>
                     <BaseLayout>

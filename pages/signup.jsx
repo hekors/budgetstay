@@ -13,6 +13,7 @@ import {
   FormErrorMessage,
   CircularProgress,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import { register } from "../config/appwrite";
 import { helpers } from "../helpers";
@@ -211,6 +212,12 @@ const Signup = () => {
                   )}
                 </Button>
               </VStack>
+              <Text my="4" textAlign="center">
+                Already having an account?{" "}
+                <Link  href="/login" alt="Sign up" color="blue">
+                  Login
+                </Link>
+              </Text>
             </form>
           </Box>
           <Box textAlign={"center"}>
