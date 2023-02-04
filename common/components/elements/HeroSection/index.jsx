@@ -1,8 +1,11 @@
 import { Box, Button, Heading, Img, Text } from '@chakra-ui/react';
 import Image from 'next/image';
+import Navbar from '../Navbar/Navbar';
 
 const HeroSection = () => {
     return (
+        <>
+        <Navbar/>
         <Box className="hero-section-bg" bgColor={"black"} py={"20"}>
             <Heading fontSize={"6xl"} textColor={"white"}>
                 <Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"center"} gap={"2"}>
@@ -31,6 +34,7 @@ const HeroSection = () => {
                 mt={"10"}
             />
         </Box>
+        </>
     )
 };
 
