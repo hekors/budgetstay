@@ -1,5 +1,6 @@
 import { Box, Button, Heading, Img, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -45,9 +46,11 @@ const HeroSection = () => {
           bottom={"-10"}
           left={"-32"}
         />
-        <Button variant={"solid"} colorScheme={"blue"} size={"lg"}>
-          {"Get Started"}
-        </Button>
+        <Link href={"/signup"}>
+          <Button variant={"solid"} colorScheme={"blue"} size={"lg"}>
+            {"Get Started"}
+          </Button>
+        </Link>
       </Box>
       <Img
         src={"/assets/buildings.svg"}
