@@ -4,6 +4,7 @@ import { login, googleAuth, githubAuth } from "../config/appwrite";
 import { helpers } from "../helpers/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BaseLayout from "../common/components/layouts/BaseLayout";
 
 import {
   Box,
@@ -16,6 +17,9 @@ import {
   FormErrorMessage,
   Heading,
   Text,
+  Grid,
+  Image,
+  Ba,
 } from "@chakra-ui/react";
 
 const Login = () => {
@@ -113,103 +117,145 @@ const Login = () => {
 
   return (
     <React.Fragment>
-      <Container w={"auto"} mt={24}>
-        <Heading textAlign="center" fontSize="5xl" my="4">
-          Login
-        </Heading>
-        <Box>
-          <form onSubmit={handleLoginSubmit}>
-            {/***** Email Input *****/}
-            <VStack>
-              <FormControl
-                isRequired={error.isError}
-                isInvalid={
-                  error.isError && error.errorEmailMessage.length !== 0
-                }
-              >
-                <FormLabel htmlFor="Email">Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  variant="filled"
-                  value={data.email}
-                  _focus={{ boxShadow: "outline" }}
-                  onChange={handleChangeEmail}
-                  placeholder="Email"
-                />
-                {error.isError ? (
-                  <FormErrorMessage>{error.errorEmailMessage}</FormErrorMessage>
-                ) : (
-                  <></>
-                )}
-              </FormControl>
+      <BaseLayout background="#020817" h="100vh">
+        <Grid gridTemplateColumns="auto auto">
+          <Box
+            w={{ sm: "base", md: "md" }}
+            m="10"
+            p='10'
+            boxShadow={'2xl'}
+            bgColor={"gray.100"}
+            borderRadius={"md"}
+          
+          >
+            <Heading textAlign="center" fontSize="4xl" my="4">
+              Login
+            </Heading>
+            <Box>
+              <form onSubmit={handleLoginSubmit}>
+                {/***** Email Input *****/}
+                <VStack gap={2}>
+                  <FormControl
+                    isRequired={error.isError}
+                    isInvalid={
+                      error.isError && error.errorEmailMessage.length !== 0
+                    }
+                  >
+                    <FormLabel htmlFor="Email">Email</FormLabel>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="email"
+                      bgColor={"gray.200"}
+                      value={data.email}
+                      _focus={{ boxShadow: "outline" }}
+                      onChange={handleChangeEmail}
+                      placeholder="Email"
+                    />
+                    {error.isError ? (
+                      <FormErrorMessage>
+                        {error.errorEmailMessage}
+                      </FormErrorMessage>
+                    ) : (
+                      <></>
+                    )}
+                  </FormControl>
 
-              {/***** Password Input *****/}
-              <FormControl
-                isRequired={error.isError}
-                isInvalid={
-                  error.isError && error.errorPasswordMessage.length !== 0
-                }
-              >
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  variant="filled"
-                  value={data.password}
-                  onChange={handleChangePassword}
-                  _focus={{ boxShadow: "outline" }}
-                  placeholder="Password"
-                />
-                {error.isError ? (
-                  <FormErrorMessage>
-                    {error.errorPasswordMessage}
-                  </FormErrorMessage>
-                ) : (
-                  <></>
-                )}
-              </FormControl>
+                  {/***** Password Input *****/}
+                  <FormControl
+                    isRequired={error.isError}
+                    isInvalid={
+                      error.isError && error.errorPasswordMessage.length !== 0
+                    }
+                  >
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      type="password"
+                      bgColor={"gray.200"}
+                      name="password"
+                      id="password"
+                      value={data.password}
+                      onChange={handleChangePassword}
+                      _focus={{ boxShadow: "outline" }}
+                      placeholder="Password"
+                    />
+                    {error.isError ? (
+                      <FormErrorMessage>
+                        {error.errorPasswordMessage}
+                      </FormErrorMessage>
+                    ) : (
+                      <></>
+                    )}
+                  </FormControl>
 
-              {/* Login Button */}
+                  {/* Login Button */}
+                  <Button
+                    w="full"
+                    type="submit"
+                    variant="solid"
+                    colorScheme="blue"
+                    _focus={{
+                      transform: "scale(1.02)",
+                      boxShadow: "outline",
+                    }}
+                  >
+                    Log In
+                  </Button>
+                </VStack>
+              </form>
+              <Text my="4" fontWeight="bold" textAlign="center">
+                OR
+              </Text>
               <Button
+                variant="outline"
+                my="2"
+                mx="auto"
                 w="full"
-                type="submit"
-                variant="solid"
-                colorScheme="blue"
-                _focus={{
-                  transform: "scale(1.02)",
-                  boxShadow: "outline",
-                }}
+                onClick={googleAuth}
               >
-                Log In
+                Login with Google
               </Button>
-            </VStack>
-          </form>
-          <Text my="4" fontWeight="bold" textAlign="center">
-            OR
-          </Text>
-          <Button
-            variant="outline"
-            my="2"
-            mx="auto"
-            w="full"
-            onClick={googleAuth}
-          >
-            Login with Google
-          </Button>
-          <Button
-            variant="outline"
-            my="2"
-            mx="auto"
-            w="full"
-            onClick={githubAuth}
-          >
-            Login with GitHub
-          </Button>
-        </Box>
-      </Container>
+              <Button
+                variant="outline"
+                my="2"
+                mx="auto"
+                w="full"
+                onClick={githubAuth}
+              >
+                Login with GitHub
+              </Button>
+            </Box>
+          </Box>
+          <Box textAlign={"center"}>
+            <Text
+              zIndex="10"
+              color="white"
+              textAlign="center"
+              position="absolute"
+              fontSize="3xl"
+              top={"32"}
+              right="200"
+              w="md"
+              mx={"auto"}
+            >
+              Start your journey today with a comfortable Hostel stay
+              <Text w="48" m="auto" fontSize="lg" mt="6">
+                Sign up and explore the world of Hostels.
+              </Text>
+            </Text>
+            <Box>
+              <Image
+                src={"/assets/signup.svg"}
+                h="75vh"
+                mx={"auto"}
+                mt="-10"
+                alt="Background Image"
+                zIndex="-6"
+              />
+            </Box>
+          </Box>
+        </Grid>
+      </BaseLayout>
       <ToastContainer
         position="top-center"
         autoClose={5000}
