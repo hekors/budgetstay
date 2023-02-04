@@ -125,4 +125,39 @@ export const register = async (email, password, name) => {
   }
 };
 
+export const googleAuth = () => {
+  try {
+    const account = new Account(client);
+    return account.createOAuth2Session(
+      "google",
+      "http://localhost:3000/login",
+      "http://localhost:3000/signup"
+    );
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const githubAuth = () => {
+  try {
+    const account = new Account(client);
+    return account.createOAuth2Session(
+      "github",
+      "http://localhost:3000/login",
+      "http://localhost:3000/signup"
+    );
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const checkAuthenticated = () => {
+  try {
+    const account = new Account(client);
+    return account.getSessions();
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export default client;

@@ -17,7 +17,6 @@ import {
 } from "@chakra-ui/react";
 import { register } from "../config/appwrite";
 import { helpers } from "../helpers";
-import { Client, Account, ID } from "appwrite";
 import BaseLayout from "../common/components/layouts/BaseLayout";
 
 const Signup = () => {
