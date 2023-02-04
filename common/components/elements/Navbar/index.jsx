@@ -1,12 +1,20 @@
-import { Box, Button, ButtonGroup, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  HStack,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import BaseLayout from "../../layouts/BaseLayout";
+import ColorModeSwitcher from "../ColorModeSwitcher";
 
 const Navbar = () => {
   return (
-    <Box bgColor={"black"}>
+    <Box bgColor={useColorModeValue("black", "gray.800")}>
       <BaseLayout
+        pt="0"
         flexDirection={"row"}
         display={"flex"}
         alignItems={"center"}
@@ -21,18 +29,21 @@ const Navbar = () => {
             priority
           />
         </Link>
-        <ButtonGroup>
-          <Link href="/login">
-            <Button colorScheme={"blue"} variant={"ghost"}>
-              Login
-            </Button>
-          </Link>
-          <Link href="/signup">
-            <Button variant={"solid"} colorScheme={"blue"}>
-              Create Account
-            </Button>
-          </Link>
-        </ButtonGroup>
+        <HStack>
+          <ColorModeSwitcher />
+          <ButtonGroup>
+            <Link href="/login">
+              <Button colorScheme={"blue"} variant={"ghost"}>
+                Login
+              </Button>
+            </Link>
+            <Link href="/signup">
+              <Button variant={"solid"} colorScheme={"blue"}>
+                Create Account
+              </Button>
+            </Link>
+          </ButtonGroup>
+        </HStack>
       </BaseLayout>
     </Box>
   );
