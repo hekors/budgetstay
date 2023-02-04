@@ -35,7 +35,7 @@ BudgetStay is a budget-friendly accommodation specially designed for students to
 
 MEME 
 
-## The Pain Point 
+## Problem Statement 
 Nowadays, finding a space to live has become so much easier. But you don’t get the guaranty of being secure and safe. 
 
 You get what you want, but the reality is very different! Let's say you are looking for hostels that provide vegetarian food (especially Jain food). You visit and find it to be an ideal place for you to stay. Once you start living, you realize that everything was just "dikhane ke daat"! Here is a real-time problem faced by one of the students. 
