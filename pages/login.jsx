@@ -5,6 +5,8 @@ import { helpers } from "../helpers/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BaseLayout from "../common/components/layouts/BaseLayout";
+import {FcGoogle} from 'react-icons/fc'
+import {FaGithub} from 'react-icons/fa'
 
 import {
   Box,
@@ -212,7 +214,9 @@ const Login = () => {
                 mx="auto"
                 w="full"
                 onClick={googleAuth}
+               gap='3'
               >
+                <FcGoogle />
                 Login with Google
               </Button>
               <Button
@@ -221,7 +225,9 @@ const Login = () => {
                 mx="auto"
                 w="full"
                 onClick={githubAuth}
+                gap='3'
               >
+                <FaGithub />
                 Login with GitHub
               </Button>
             </Box>
