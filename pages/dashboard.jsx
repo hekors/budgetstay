@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [userCategory, setUserCategory] = useState("");
 
   useEffect(() => {
-    localStorage.getItem("user-category")
+    setUserCategory(localStorage.getItem("user-category"));
   });
 
   return (
