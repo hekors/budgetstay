@@ -151,13 +151,13 @@ export const githubAuth = () => {
   }
 };
 
-export const checkAuthenticated = () => {
-  try {
-    const account = new Account(client);
-    return account.getSession();
-  } catch (error) {
-    throw new Error(error);
-  }
-};
+// export const checkAuthenticated = () => {
+//   try {
+//     const account = new Account(client);
+//     return account.getSession();
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };
 
 export default client;
