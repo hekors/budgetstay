@@ -7,11 +7,11 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const auth = checkAuthenticated() && router.route.startsWith("/dashboard");
+  const auth = checkAuthenticated();
 
   return (
     <ChakraProvider theme={theme}>
-      {auth ? <Component {...pageProps} /> : <Login />}
+      {<Component {...pageProps} />}
     </ChakraProvider>
   );
 }

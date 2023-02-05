@@ -20,7 +20,8 @@
     "react-icons": "^4.7.1",
     "react-instantsearch": "^6.39.0",
     "react-instantsearch-dom": "^6.39.0",
-    "react-toastify": "^9.1.1"
+    "react-toastify": "^9.1.1",
+    "twilio-chat": "^6.0.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.0.1",
