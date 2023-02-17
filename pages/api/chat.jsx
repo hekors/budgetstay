@@ -2,12 +2,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPEN_AI,
 });
 
 const openai = new OpenAIApi(config);
 
-export default async (req, res) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async function(req, res) {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: req.body.prompt,
@@ -18,5 +19,5 @@ export default async (req, res) => {
     presence_penalty: 0,
   });
 
-  res.status(200).json({ results: completion.data });
+  return res.status(200).json({ results: completion.data });
 };

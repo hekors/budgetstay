@@ -24,16 +24,15 @@ app.listen(port, () => {
   console.log("PORT IS RUNNING");
 });
 
-const accountSid =
-  process.env.TWILIO_ACCOUNT_SID || "AC53003960358dc32e16d92dc3ca7eadce";
-const authToken =
-  process.env.TWILIO_AUTH_TOKEN || "da74cce8778fa0af13da505cf0b6ef11";
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
 client.messages
   .create({
     from: "whatsapp:+14155238886",
     body: "hey there",
-    to: "whatsapp:+919644963410",
+    // TO changed to FROM value for not displaying numbers
+    to: "whatsapp:+14155238886",
   })
   .then((message) => console.log(message.sid));
