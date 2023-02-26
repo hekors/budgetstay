@@ -1,8 +1,12 @@
 const express = require("express");
-const { dirname } = require("path");
 const MessagingResponse = require("twilio/lib/twiml/MessagingResponse");
+const twilio = require("twilio");
+
 const app = express();
-const port = "5000";
+const PORT = process.env.PORT || 5000;
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
 app.use(express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: false }));
@@ -11,28 +15,30 @@ app.get("/", (req, res) => {
   res.send("Heyy Ayush");
 });
 
-app.post("/recieve", (req, res) => {
-  console.log(req.body.ProfileName);
-
-  const twiml = new MessagingResponse();
-  twiml.message("you sent a message");
-  res.writeHead(200, { "Content-type": "text/xml" });
-  res.end(twiml.toString());
+app.post("/receive", (req, res) => {
+  try {
+    console.log(req.body.ProfileName);
+    const twiml = new MessagingResponse();
+    twiml.message("you sent a message");
+    res.writeHead(200, { "Content-type": "text/xml" });
+    res.end(twiml.toString());
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
-app.listen(port, () => {
-  console.log("PORT IS RUNNING");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require("twilio")(accountSid, authToken);
+const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 client.messages
   .create({
-    from: "whatsapp:+14155238886",
-    body: "hey there",
-    // TO changed to FROM value for not displaying numbers
-    to: "whatsapp:+14155238886",
+    from: `whatsapp:${TWILIO_PHONE_NUMBER}`,
+    body: "Hey there",
+    to: `whatsapp:${TWILIO_PHONE_NUMBER}`,
   })
-  .then((message) => console.log(message.sid));
+  .then((message) => console.log(message.sid))
+  .catch((error) => console.error(error));
